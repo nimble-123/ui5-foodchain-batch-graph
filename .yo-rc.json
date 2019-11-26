@@ -1,0 +1,10 @@
+{
+  "generator-easy-ui5": {
+    "platform": "Static webserver",
+    "ui5libs": "Content delivery network (SAPUI5)",
+    "projectname": "ui5-producer-app",
+    "namespace": "io.dev.foodchain",
+    "viewtype": "XML",
+    "viewname": "AppView"
+  }
+}
