@@ -1,31 +1,31 @@
 {
-        "name": "ui5-producer-app",
-        "version": "0.0.1",
-        "engines": {
-                "node": ">=10.0.0"
-        },
-        "scripts": {
-                "start": "ui5 serve -o index.html",
-                "serve": "ui5 serve",
-                "test": "npm run lint && npm run karma",
-                "karma-ci": "karma start karma-ci.conf.js",
-                "karma": "rimraf coverage && npm run karma-ci",
-                "lint": "eslint webapp",
-                "build:ui": "rimraf dist && ui5 build  --dest dist/webapp"
-        },
-        "dependencies": {
-                "@openui5/sap.m": "^1.71.1",
-                "shx": "^0.3.2"
-        },
-        "devDependencies": {
-                "@ui5/cli": "^1.10.0",
-                "rimraf": "^3.0.0",
-                "karma": "^4.4.1",
-                "karma-chrome-launcher": "^3.1.0",
-                "karma-coverage": "^2.0.1",
-                "karma-ui5": "^1.1.0",
-                "cross-var": "^1.1.0",
-                "mbt": "0.3.2",
-                "eslint": "^6.5.1"
-        }
+  "name": "ui5-producer-app",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "start": "ui5 serve -o index.html",
+    "serve": "ui5 serve",
+    "test": "npm run lint && npm run karma",
+    "karma-ci": "karma start karma-ci.conf.js",
+    "karma": "rimraf coverage && npm run karma-ci",
+    "lint": "eslint webapp",
+    "build:ui": "rimraf dist && ui5 build  --dest dist/webapp"
+  },
+  "dependencies": {
+    "@openui5/sap.m": "^1.71.1",
+    "shx": "^0.3.2"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^1.10.0",
+    "cross-var": "^1.1.0",
+    "eslint": "^6.5.1",
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.1",
+    "karma-ui5": "^1.1.0",
+    "mbt": "0.3.2",
+    "rimraf": "^3.0.0"
+  }
 }
