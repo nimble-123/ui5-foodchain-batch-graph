@@ -110,7 +110,7 @@
 										</lines>
 										<groups>
 											<Group key="{key}"
-												icon="sap-icon://measure"
+												icon="{icon}"
 												headerCheckBoxState="{headerCheckboxState}"
 												title="{title}"
 												status="{status}">
