@@ -21,12 +21,20 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
                         async: false,
                     }).done(function(oBatch) {
                         // transform requested data to fit UI5 control model
+                        var sGroupId = '';
+                        if (Number(oBatch.batchId) < 3) {
+                            sGroupId = 'F';
+                        } else if (Number(oBatch.batchId) == 3) {
+                            sGroupId = 'S';
+                        } else {
+                            sGroupId = 'C';
+                        }
                         aNodesArray.push({
                             key: oBatch.batchId,
                             title: 'Batch_' + oBatch.batchId,
                             icon: 'sap-icon://database',
                             status: Number(oBatch.batchId) < 3 ? 'Warning' : 'Success',
-                            group: Number(oBatch.batchId) < 3 ? 'F' : 'S',
+                            group: sGroupId,
                             shape: 'Box',
                             maxWidth: 600,
                             attributes: [
@@ -63,7 +71,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
                                             .pop(),
                                     icon: 'sap-icon://product',
                                     status: Number(oBatch.batchId) < 3 ? 'Error' : 'Success',
-                                    group: Number(oBatch.batchId) < 3 ? 'F' : 'S',
+                                    group: sGroupId,
                                 });
                                 // add line between Material and corresponding Batch
                                 aLinesArray.push({
@@ -72,18 +80,13 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
                                 });
                             });
                         });
-                        if (oBatch.batchId <= 3) {
-                            aLinesArray.push({
-                                from: oBatch.batchId,
-                                to: '3',
-                            });
-                        }
-                        if (oBatch.batchId > 3) {
-                            aLinesArray.push({
-                                from: '3',
-                                to: oBatch.batchId,
-                            });
-                        }
+                    });
+                });
+                // iterate over Batch edges and create lines between corresponding Batches
+                oBatchNetwork.edges.forEach(oEdge => {
+                    aLinesArray.push({
+                        from: oEdge.source.split('#').pop(),
+                        to: oEdge.target.split('#').pop(),
                     });
                 });
             });
